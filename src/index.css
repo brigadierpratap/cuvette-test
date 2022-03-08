@@ -1,13 +1,94 @@
+:root {
+  --pi: 3.14159265359;
+  --a1: 60;
+  --a2: 25;
+  --a3: 10;
+  --a4: 5;
+}
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "DM Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+
+@keyframes percent1 {
+  to {
+    stroke-dasharray: calc(2 * var(--pi) * 300 * var(--a1) / 100)
+      calc(2 * var(--pi) * 300 * calc(1 - var(--a1) / 100));
+  }
+}
+
+@keyframes percent2 {
+  to {
+    stroke-dasharray: calc(2 * var(--pi) * 300 * var(--a2) / 100)
+      calc(2 * var(--pi) * 300 * calc(1 - var(--a2) / 100));
+  }
+}
+
+@keyframes percent3 {
+  to {
+    stroke-dasharray: calc(2 * var(--pi) * 300 * var(--a3) / 100)
+      calc(2 * var(--pi) * 300 * calc(1 - var(--a3) / 100));
+  }
+}
+
+@keyframes percent4 {
+  to {
+    stroke-dasharray: calc(2 * var(--pi) * 300 * var(--a4) / 100)
+      calc(2 * var(--pi) * 300 * calc(1 - var(--a4) / 100));
+  }
+}
+
+.donut {
+  transform-origin: center center;
+  transition: 0.5s ease-in-out;
+  stroke-dashoffset: 0;
+  cursor: pointer;
+}
+
+.donut:nth-child(1) {
+  transform: rotateZ(-90deg);
+  animation: percent1 1s ease-in-out forwards;
+}
+
+.donut:nth-child(2) {
+  transform: rotateZ(calc(-90deg + calc(var(--a1) * 360deg / 100)));
+  animation: percent2 1s ease-in-out forwards;
+}
+
+.donut:nth-child(3) {
+  transform: rotateZ(
+    calc(
+      -90deg + calc(var(--a1) * 360deg / 100) + calc(var(--a2) * 360deg / 100)
+    )
+  );
+  animation: percent3 1s ease-in-out forwards;
+}
+
+.donut:nth-child(4) {
+  transform: rotateZ(
+    calc(
+      -90deg + calc(var(--a1) * 360deg / 100) + calc(var(--a2) * 360deg / 100) +
+        calc(var(--a3) * 360deg / 100)
+    )
+  );
+  animation: percent4 1s ease-in-out forwards;
+}
+
+.donut:hover {
+  stroke-width: 100;
 }
