@@ -1,4 +1,4 @@
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Layout from "./Components/Layout/Layout";
 import SkillTest from "./Components/SkillTest/SkillTest";
@@ -8,9 +8,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<h2>Home</h2>} />
+          <Route index element={<SkillTest />} />
           <Route path="skill-test" element={<SkillTest />} />
-          <Route path="*" element={<h1>Other</h1>} />
+          <Route path="*" element={<Navigate to={"/skill-test"} />} />
         </Route>
       </Routes>
     </BrowserRouter>

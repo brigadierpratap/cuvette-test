@@ -94,7 +94,7 @@ const UpdateModal = ({
       <ModalMain onClick={(e) => e.stopPropagation()} isModalOpen={isModalOpen}>
         <div className="head">
           <span>Update Skill Scores</span>
-          <img src={html} />
+          <img src={html} alt="html" />
         </div>
         <UpdateRow>
           <UpdateStatement>
